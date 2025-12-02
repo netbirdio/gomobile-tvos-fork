@@ -35,13 +35,17 @@ func isApplePlatform(platform string) bool {
 	return contains(applePlatforms, platform)
 }
 
-var applePlatforms = []string{"ios", "iossimulator", "macos", "maccatalyst"}
+var applePlatforms = []string{"ios", "iossimulator", "tvos", "tvossimulator", "macos", "maccatalyst"}
 
 func platformArchs(platform string) []string {
 	switch platform {
 	case "ios":
 		return []string{"arm64"}
 	case "iossimulator":
+		return []string{"arm64", "amd64"}
+	case "tvos":
+		return []string{"arm64"}
+	case "tvossimulator":
 		return []string{"arm64", "amd64"}
 	case "macos", "maccatalyst":
 		return []string{"arm64", "amd64"}
@@ -61,7 +65,7 @@ func platformOS(platform string) string {
 	switch platform {
 	case "android":
 		return "android"
-	case "ios", "iossimulator":
+	case "ios", "iossimulator", "tvos", "tvossimulator":
 		return "ios"
 	case "macos", "maccatalyst":
 		// For "maccatalyst", Go packages should be built with GOOS=darwin,
@@ -82,6 +86,8 @@ func platformTags(platform string) []string {
 		return []string{"android"}
 	case "ios", "iossimulator":
 		return []string{"ios"}
+	case "tvos", "tvossimulator":
+		return []string{"tvos"}
 	case "macos":
 		return []string{"macos"}
 	case "maccatalyst":
@@ -220,6 +226,18 @@ func envInit() (err error) {
 				sdk = "iphonesimulator"
 				clang, cflags, err = envClang(sdk)
 				cflags += " -mios-simulator-version-min=" + buildIOSVersion
+				cflags += " -fembed-bitcode"
+			case "tvos":
+				goos = "ios"
+				sdk = "appletvos"
+				clang, cflags, err = envClang(sdk)
+				cflags += " -mtvos-version-min=" + buildTVOSVersion
+				cflags += " -fembed-bitcode"
+			case "tvossimulator":
+				goos = "ios"
+				sdk = "appletvsimulator"
+				clang, cflags, err = envClang(sdk)
+				cflags += " -mtvos-simulator-version-min=" + buildTVOSVersion
 				cflags += " -fembed-bitcode"
 			case "maccatalyst":
 				// See the comment about maccatalyst's GOOS, build tags configuration
