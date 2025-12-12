@@ -1,34 +1,56 @@
-# Go support for Mobile devices
+# gomobile with tvOS Support
 
-[![Go Reference](https://pkg.go.dev/badge/golang.org/x/mobile.svg)](https://pkg.go.dev/golang.org/x/mobile)
+This is a fork of the official [golang.org/x/mobile](https://go.googlesource.com/mobile) repository that adds support for Apple tvOS targets.
 
-The Go mobile repository holds packages and build tools for using Go on mobile platforms.
+## What's Different
 
-Package documentation as a starting point:
+This fork extends gomobile to support building Go libraries for tvOS and tvOS Simulator, in addition to the standard iOS, iOS Simulator, macOS, Mac Catalyst, and Android targets.
+
+### Added Targets
+
+- `tvos` - Apple tvOS (arm64)
+- `tvossimulator` - Apple tvOS Simulator (arm64, amd64)
+
+### New Build Flag
+
+- `-tvosversion` - Minimum tvOS version (default: 13.0)
+
+## Usage
+
+### Building for tvOS
+
+```bash
+gomobile bind -target=tvos ./package
+```
+
+### Building for tvOS Simulator
+
+```bash
+gomobile bind -target=tvossimulator ./package
+```
+
+### Building an XCFramework with tvOS Support
+
+```bash
+gomobile bind -target=ios,iossimulator,tvos,tvossimulator -o MyFramework.xcframework ./package
+```
+
+## Installation
+
+```bash
+go install github.com/netbirdio/gomobile-tvos-fork/cmd/gomobile@latest
+go install github.com/netbirdio/gomobile-tvos-fork/cmd/gobind@latest
+```
+
+## Original Project
+
+This fork is based on the Go Mobile project from [golang.org/x/mobile](https://pkg.go.dev/golang.org/x/mobile). The original project provides:
 
 - [Building all-Go apps](https://golang.org/x/mobile/app)
 - [Building libraries for SDK apps](https://golang.org/x/mobile/cmd/gobind)
 
-![Caution image](doc/caution.png)
+For general gomobile documentation and usage, see [golang.org/wiki/Mobile](https://golang.org/wiki/Mobile).
 
-The Go Mobile project is experimental. Use this at your own risk.
-While we are working hard to improve it, neither Google nor the Go
-team can provide end-user support.
+## License
 
-This is early work and installing the build system requires Go 1.5.
-Follow the instructions on
-[golang.org/wiki/Mobile](https://golang.org/wiki/Mobile)
-to install the gomobile command, build the
-[basic](https://golang.org/x/mobile/example/basic)
-and the [bind](https://golang.org/x/mobile/example/bind) example apps.
-
---
-
-Contributions to Go are appreciated. See https://go.dev/doc/contribute.
-
-The git repository is https://go.googlesource.com/mobile.
-
-* Bugs can be filed at the [Go issue tracker](https://go.dev/issue/new?title=x/mobile:+).
-* Feature requests should preliminary be discussed on
-[golang-nuts](https://groups.google.com/forum/#!forum/golang-nuts)
-mailing list.
+This project retains the original BSD-style license from the Go project. See the [LICENSE](LICENSE) file for details.
