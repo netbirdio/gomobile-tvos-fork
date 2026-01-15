@@ -187,7 +187,7 @@ func (cmd *command) usage() {
 }
 
 var usageTmpl = template.Must(template.New("usage").Parse(
-	`Gomobile is a tool for building and running mobile apps written in Go.
+	`Gomobile is a tool for building and running mobile apps written in Go. This fork by NetBird includes support for Apple tvOS targets.
 
 To install:
 
