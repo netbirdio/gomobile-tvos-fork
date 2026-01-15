@@ -13,9 +13,9 @@ import (
 	"image/draw"
 	"time"
 
-	"golang.org/x/mobile/event/size"
-	"golang.org/x/mobile/exp/gl/glutil"
-	"golang.org/x/mobile/geom"
+	"github.com/netbirdio/gomobile-tvos-fork/event/size"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/gl/glutil"
+	"github.com/netbirdio/gomobile-tvos-fork/geom"
 )
 
 // FPS draws a count of the frames rendered per second.

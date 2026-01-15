@@ -28,7 +28,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"golang.org/x/mobile/internal/sdkpath"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/sdkpath"
 )
 
 var outfile = flag.String("o", "", "result will be written file")

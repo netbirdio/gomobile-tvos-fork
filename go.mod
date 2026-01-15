@@ -1,4 +1,4 @@
-module golang.org/x/mobile
+module github.com/netbirdio/gomobile-tvos-fork
 
 go 1.24.0
 
@@ -25,6 +25,7 @@ require (
 )
 
 require (
+	golang.org/x/mobile v0.0.0-20250911085028-6912353760cf // indirect
 	golang.org/x/sys v0.38.0 // indirect
 	golang.org/x/tools/go/expect v0.1.1-deprecated // indirect
 )

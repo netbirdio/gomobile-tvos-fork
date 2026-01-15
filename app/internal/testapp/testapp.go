@@ -11,13 +11,13 @@ import (
 	"log"
 	"net"
 
-	"golang.org/x/mobile/app"
-	"golang.org/x/mobile/app/internal/apptest"
-	"golang.org/x/mobile/event/lifecycle"
-	"golang.org/x/mobile/event/paint"
-	"golang.org/x/mobile/event/size"
-	"golang.org/x/mobile/event/touch"
-	"golang.org/x/mobile/gl"
+	"github.com/netbirdio/gomobile-tvos-fork/app"
+	"github.com/netbirdio/gomobile-tvos-fork/app/internal/apptest"
+	"github.com/netbirdio/gomobile-tvos-fork/event/lifecycle"
+	"github.com/netbirdio/gomobile-tvos-fork/event/paint"
+	"github.com/netbirdio/gomobile-tvos-fork/event/size"
+	"github.com/netbirdio/gomobile-tvos-fork/event/touch"
+	"github.com/netbirdio/gomobile-tvos-fork/gl"
 )
 
 func main() {

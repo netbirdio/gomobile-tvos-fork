@@ -12,17 +12,17 @@ import (
 	"math/rand"
 	"time"
 
-	"golang.org/x/mobile/app"
-	"golang.org/x/mobile/event/key"
-	"golang.org/x/mobile/event/lifecycle"
-	"golang.org/x/mobile/event/paint"
-	"golang.org/x/mobile/event/size"
-	"golang.org/x/mobile/event/touch"
-	"golang.org/x/mobile/exp/gl/glutil"
-	"golang.org/x/mobile/exp/sprite"
-	"golang.org/x/mobile/exp/sprite/clock"
-	"golang.org/x/mobile/exp/sprite/glsprite"
-	"golang.org/x/mobile/gl"
+	"github.com/netbirdio/gomobile-tvos-fork/app"
+	"github.com/netbirdio/gomobile-tvos-fork/event/key"
+	"github.com/netbirdio/gomobile-tvos-fork/event/lifecycle"
+	"github.com/netbirdio/gomobile-tvos-fork/event/paint"
+	"github.com/netbirdio/gomobile-tvos-fork/event/size"
+	"github.com/netbirdio/gomobile-tvos-fork/event/touch"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/gl/glutil"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite/clock"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite/glsprite"
+	"github.com/netbirdio/gomobile-tvos-fork/gl"
 )
 
 func main() {

@@ -24,11 +24,11 @@ import (
 	"runtime"
 	"time"
 
-	"golang.org/x/mobile/event/lifecycle"
-	"golang.org/x/mobile/event/paint"
-	"golang.org/x/mobile/event/size"
-	"golang.org/x/mobile/event/touch"
-	"golang.org/x/mobile/geom"
+	"github.com/netbirdio/gomobile-tvos-fork/event/lifecycle"
+	"github.com/netbirdio/gomobile-tvos-fork/event/paint"
+	"github.com/netbirdio/gomobile-tvos-fork/event/size"
+	"github.com/netbirdio/gomobile-tvos-fork/event/touch"
+	"github.com/netbirdio/gomobile-tvos-fork/geom"
 )
 
 func init() {

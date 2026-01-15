@@ -9,8 +9,8 @@ package glutil
 import (
 	"fmt"
 
-	"golang.org/x/mobile/exp/f32"
-	"golang.org/x/mobile/gl"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/f32"
+	"github.com/netbirdio/gomobile-tvos-fork/gl"
 )
 
 // CreateProgram creates, compiles, and links a gl.Program.

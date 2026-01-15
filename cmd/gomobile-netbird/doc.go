@@ -9,7 +9,7 @@ Gomobile is a tool for building and running mobile apps written in Go.
 
 To install:
 
-	$ go install golang.org/x/mobile/cmd/gomobile@latest
+	$ go install github.com/netbirdio/gomobile-tvos-fork/cmd/gomobile-netbird@latest
 	$ gomobile init
 
 At least Go 1.16 is required.

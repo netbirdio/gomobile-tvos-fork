@@ -11,7 +11,7 @@ import (
 	"math"
 	"strings"
 
-	"golang.org/x/mobile/internal/importers/objc"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/objc"
 )
 
 // TODO(hyangah): handle method name conflicts.
