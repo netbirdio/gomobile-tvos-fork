@@ -14,10 +14,10 @@ import (
 
 	_ "image/png"
 
-	"golang.org/x/mobile/asset"
-	"golang.org/x/mobile/exp/f32"
-	"golang.org/x/mobile/exp/sprite"
-	"golang.org/x/mobile/exp/sprite/clock"
+	"github.com/netbirdio/gomobile-tvos-fork/asset"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/f32"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite/clock"
 )
 
 const (

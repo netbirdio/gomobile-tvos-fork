@@ -12,7 +12,7 @@ import "C"
 import (
 	"unsafe"
 
-	"golang.org/x/mobile/internal/mobileinit"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/mobileinit"
 )
 
 //export setContext

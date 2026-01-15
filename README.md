@@ -20,26 +20,26 @@ This fork extends gomobile to support building Go libraries for tvOS and tvOS Si
 ### Building for tvOS
 
 ```bash
-gomobile bind -target=tvos ./package
+gomobile-netbird bind -target=tvos ./package
 ```
 
 ### Building for tvOS Simulator
 
 ```bash
-gomobile bind -target=tvossimulator ./package
+gomobile-netbird bind -target=tvossimulator ./package
 ```
 
 ### Building an XCFramework with tvOS Support
 
 ```bash
-gomobile bind -target=ios,iossimulator,tvos,tvossimulator -o MyFramework.xcframework ./package
+gomobile-netbird bind -target=ios,iossimulator,tvos,tvossimulator -o MyFramework.xcframework ./package
 ```
 
 ## Installation
 
 ```bash
-go install github.com/netbirdio/gomobile-tvos-fork/cmd/gomobile@latest
-go install github.com/netbirdio/gomobile-tvos-fork/cmd/gobind@latest
+go install github.com/netbirdio/gomobile-tvos-fork/cmd/gomobile-netbird@latest
+go install github.com/netbirdio/gomobile-tvos-fork/cmd/gobind-netbird@latest
 ```
 
 ## Original Project

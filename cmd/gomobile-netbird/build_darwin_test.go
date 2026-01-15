@@ -35,8 +35,8 @@ func TestAppleBuild(t *testing.T) {
 		pkg  string
 		main bool
 	}{
-		{"golang.org/x/mobile/example/basic", true},
-		{"golang.org/x/mobile/bind/testdata/testpkg", false},
+		{"github.com/netbirdio/gomobile-tvos-fork/example/basic", true},
+		{"github.com/netbirdio/gomobile-tvos-fork/bind/testdata/testpkg", false},
 	}
 	for _, test := range tests {
 		buf := new(bytes.Buffer)

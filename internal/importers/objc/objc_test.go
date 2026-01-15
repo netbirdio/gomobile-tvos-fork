@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	"golang.org/x/mobile/internal/importers"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers"
 )
 
 func TestImport(t *testing.T) {

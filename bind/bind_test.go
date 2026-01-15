@@ -24,9 +24,9 @@ import (
 	"strings"
 	"testing"
 
-	"golang.org/x/mobile/internal/importers"
-	"golang.org/x/mobile/internal/importers/java"
-	"golang.org/x/mobile/internal/importers/objc"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/java"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/objc"
 )
 
 func init() {

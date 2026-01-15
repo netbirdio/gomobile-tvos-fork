@@ -17,7 +17,7 @@ import (
 	"strings"
 	"testing"
 
-	"golang.org/x/mobile/internal/sdkpath"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/sdkpath"
 )
 
 func init() {

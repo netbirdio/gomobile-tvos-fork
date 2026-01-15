@@ -14,12 +14,12 @@ import (
 	"image"
 	"image/draw"
 
-	"golang.org/x/mobile/event/size"
-	"golang.org/x/mobile/exp/f32"
-	"golang.org/x/mobile/exp/gl/glutil"
-	"golang.org/x/mobile/exp/sprite"
-	"golang.org/x/mobile/exp/sprite/clock"
-	"golang.org/x/mobile/geom"
+	"github.com/netbirdio/gomobile-tvos-fork/event/size"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/f32"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/gl/glutil"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite"
+	"github.com/netbirdio/gomobile-tvos-fork/exp/sprite/clock"
+	"github.com/netbirdio/gomobile-tvos-fork/geom"
 )
 
 type node struct {

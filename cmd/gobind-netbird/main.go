@@ -16,9 +16,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"golang.org/x/mobile/internal/importers"
-	"golang.org/x/mobile/internal/importers/java"
-	"golang.org/x/mobile/internal/importers/objc"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/java"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/objc"
 	"golang.org/x/tools/go/packages"
 )
 

@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"golang.org/x/mobile/internal/sdkpath"
+	"github.com/netbirdio/gomobile-tvos-fork/internal/sdkpath"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/tools/go/packages"
 )
