@@ -16,16 +16,15 @@ go 1.24.0
 godebug gotypesalias=0
 
 require (
-	golang.org/x/exp/shiny v0.0.0-20251023183803-a4bb9ffd2546
-	golang.org/x/image v0.33.0
-	golang.org/x/mod v0.30.0
-	golang.org/x/sync v0.18.0
-	golang.org/x/tools v0.39.0
+	golang.org/x/exp/shiny v0.0.0-20251219203646-944ab1f22d93
+	golang.org/x/image v0.35.0
+	golang.org/x/mod v0.32.0
+	golang.org/x/sync v0.19.0
+	golang.org/x/tools v0.41.0
 	golang.org/x/tools/go/packages/packagestest v0.1.1-deprecated
 )
 
 require (
-	golang.org/x/mobile v0.0.0-20250911085028-6912353760cf // indirect
-	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/sys v0.40.0 // indirect
 	golang.org/x/tools/go/expect v0.1.1-deprecated // indirect
 )
