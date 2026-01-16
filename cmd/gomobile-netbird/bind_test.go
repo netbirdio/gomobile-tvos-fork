@@ -185,7 +185,7 @@ func TestBindApple(t *testing.T) {
 
 var bindAndroidTmpl = template.Must(template.New("output").Parse(`GOMOBILE={{.GOPATH}}/pkg/gomobile
 WORK=$WORK
-GOOS=android CGO_ENABLED=1 gobind -lang=go,java -outdir=$WORK{{if .JavaPkg}} -javapkg={{.JavaPkg}}{{end}} github.com/netbirdio/gomobile-tvos-fork/asset
+GOOS=android CGO_ENABLED=1 gobind-netbird -lang=go,java -outdir=$WORK{{if .JavaPkg}} -javapkg={{.JavaPkg}}{{end}} github.com/netbirdio/gomobile-tvos-fork/asset
 mkdir -p $WORK/src-android-arm
 PWD=$WORK/src-android-arm GOMODCACHE=$GOPATH/pkg/mod GOOS=android GOARCH=arm CC=$NDK_PATH/toolchains/llvm/prebuilt/{{.NDKARCH}}/bin/armv7a-linux-androideabi16-clang CXX=$NDK_PATH/toolchains/llvm/prebuilt/{{.NDKARCH}}/bin/armv7a-linux-androideabi16-clang++ CGO_ENABLED=1 GOARM=7 GOPATH=$WORK:$GOPATH go mod tidy
 PWD=$WORK/src-android-arm GOMODCACHE=$GOPATH/pkg/mod GOOS=android GOARCH=arm CC=$NDK_PATH/toolchains/llvm/prebuilt/{{.NDKARCH}}/bin/armv7a-linux-androideabi16-clang CXX=$NDK_PATH/toolchains/llvm/prebuilt/{{.NDKARCH}}/bin/armv7a-linux-androideabi16-clang++ CGO_ENABLED=1 GOARM=7 GOPATH=$WORK:$GOPATH go build -x -buildmode=c-shared -o=$WORK/android/src/main/jniLibs/armeabi-v7a/libgojni.so ./gobind
@@ -196,7 +196,7 @@ jar c -C $WORK/javac-output .
 var bindAppleTmpl = template.Must(template.New("output").Parse(`GOMOBILE={{.GOPATH}}/pkg/gomobile
 WORK=$WORK
 rm -r -f "{{.Output}}.xcframework"
-GOOS=ios CGO_ENABLED=1 gobind -lang=go,objc -outdir=$WORK/ios -tags=ios{{if .Prefix}} -prefix={{.Prefix}}{{end}} github.com/netbirdio/gomobile-tvos-fork/asset
+GOOS=ios CGO_ENABLED=1 gobind-netbird -lang=go,objc -outdir=$WORK/ios -tags=ios{{if .Prefix}} -prefix={{.Prefix}}{{end}} github.com/netbirdio/gomobile-tvos-fork/asset
 mkdir -p $WORK/ios/src-arm64
 PWD=$WORK/ios/src-arm64 GOMODCACHE=$GOPATH/pkg/mod GOOS=ios GOARCH=arm64 GOFLAGS=-tags=ios CC=iphoneos-clang CXX=iphoneos-clang++ CGO_CFLAGS=-isysroot iphoneos -miphoneos-version-min=13.0 -fembed-bitcode -arch arm64 CGO_CXXFLAGS=-isysroot iphoneos -miphoneos-version-min=13.0 -fembed-bitcode -arch arm64 CGO_LDFLAGS=-isysroot iphoneos -miphoneos-version-min=13.0 -fembed-bitcode -arch arm64 CGO_ENABLED=1 DARWIN_SDK=iphoneos GOPATH=$WORK/ios:$GOPATH go mod tidy
 PWD=$WORK/ios/src-arm64 GOMODCACHE=$GOPATH/pkg/mod GOOS=ios GOARCH=arm64 GOFLAGS=-tags=ios CC=iphoneos-clang CXX=iphoneos-clang++ CGO_CFLAGS=-isysroot iphoneos -miphoneos-version-min=13.0 -fembed-bitcode -arch arm64 CGO_CXXFLAGS=-isysroot iphoneos -miphoneos-version-min=13.0 -fembed-bitcode -arch arm64 CGO_LDFLAGS=-isysroot iphoneos -miphoneos-version-min=13.0 -fembed-bitcode -arch arm64 CGO_ENABLED=1 DARWIN_SDK=iphoneos GOPATH=$WORK/ios:$GOPATH go build -x -buildmode=c-archive -o $WORK/{{.Output}}-ios-arm64.a ./gobind

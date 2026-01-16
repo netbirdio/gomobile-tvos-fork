@@ -98,12 +98,12 @@ func runBind(cmd *command) error {
 
 	var gobind string
 	if !buildN {
-		gobind, err = exec.LookPath("gobind")
+		gobind, err = exec.LookPath("gobind-netbird")
 		if err != nil {
-			return errors.New("gobind was not found. Please run gomobile init before trying again")
+			return errors.New("gobind-netbird was not found. Please run gomobile-netbird init before trying again")
 		}
 	} else {
-		gobind = "gobind"
+		gobind = "gobind-netbird"
 	}
 
 	if len(args) == 0 {
