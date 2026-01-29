@@ -13,16 +13,73 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"strings"
+	"sync"
 	"unicode"
 	"unicode/utf8"
+
+	"golang.org/x/tools/go/packages"
 
 	"github.com/netbirdio/gomobile-tvos-fork/bind"
 	"github.com/netbirdio/gomobile-tvos-fork/internal/importers"
 	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/java"
 	"github.com/netbirdio/gomobile-tvos-fork/internal/importers/objc"
-	"golang.org/x/tools/go/packages"
 )
+
+const forkModulePath = "github.com/netbirdio/gomobile-tvos-fork"
+
+var (
+	forkModuleRoot     string
+	forkModuleRootOnce sync.Once
+)
+
+// getForkModuleRoot returns the filesystem path where the gomobile-tvos-fork
+// module is located. It uses debug.ReadBuildInfo to find the module in the
+// build info, then locates it in the module cache or GOPATH.
+func getForkModuleRoot() string {
+	forkModuleRootOnce.Do(func() {
+		info, ok := debug.ReadBuildInfo()
+		if !ok {
+			return
+		}
+
+		gopath := os.Getenv("GOPATH")
+		if gopath == "" {
+			gopath = filepath.Join(os.Getenv("HOME"), "go")
+		}
+
+		// Check if we're the main module (built from source)
+		if info.Main.Path == forkModulePath {
+			// Try GOPATH/src first for local development
+			candidate := filepath.Join(gopath, "src", forkModulePath)
+			if _, err := os.Stat(candidate); err == nil {
+				forkModuleRoot = candidate
+				return
+			}
+		}
+
+		// Look for ourselves in dependencies (module cache)
+		for _, dep := range info.Deps {
+			if dep.Path == forkModulePath {
+				// Module cache location: $GOPATH/pkg/mod/path@version
+				version := dep.Version
+				if dep.Replace != nil {
+					version = dep.Replace.Version
+				}
+				forkModuleRoot = filepath.Join(gopath, "pkg", "mod", dep.Path+"@"+version)
+				return
+			}
+		}
+
+		// Fallback: try GOPATH/src
+		candidate := filepath.Join(gopath, "src", forkModulePath)
+		if _, err := os.Stat(candidate); err == nil {
+			forkModuleRoot = candidate
+		}
+	})
+	return forkModuleRoot
+}
 
 func genPkg(lang string, p *types.Package, astFiles []*ast.File, allPkg []*types.Package, classes []*java.Class, otypes []*objc.Named) {
 	fname := defaultFileName(lang, p)
@@ -375,6 +432,28 @@ func defaultFileName(lang string, pkg *types.Package) string {
 }
 
 func packageDir(path string) (string, error) {
+	// For our own fork packages, use the detected module root
+	// This avoids depending on packages.Load which requires the package
+	// to be in the current module's dependency graph
+	if strings.HasPrefix(path, forkModulePath+"/") {
+		root := getForkModuleRoot()
+		if root != "" {
+			subPath := strings.TrimPrefix(path, forkModulePath+"/")
+			dir := filepath.Join(root, subPath)
+			// Verify the directory exists and has Go files
+			entries, err := os.ReadDir(dir)
+			if err == nil {
+				for _, e := range entries {
+					if strings.HasSuffix(e.Name(), ".go") {
+						return dir, nil
+					}
+				}
+			}
+			// Fall through to packages.Load if directory check fails
+		}
+	}
+
+	// Original behavior for other packages
 	mode := packages.NeedFiles
 	pkgs, err := packages.Load(&packages.Config{Mode: mode}, path)
 	if err != nil {
