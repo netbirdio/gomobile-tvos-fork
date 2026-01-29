@@ -79,7 +79,8 @@ func runInit(cmd *command) error {
 	}()
 
 	// Make sure gobind is up to date.
-	if err := goInstall([]string{"github.com/netbirdio/gomobile-tvos-fork/cmd/gobind-netbird@latest"}, nil); err != nil {
+	// Use GOPROXY=direct to bypass proxy cache and fetch latest from GitHub
+	if err := goInstall([]string{"github.com/netbirdio/gomobile-tvos-fork/cmd/gobind-netbird@latest"}, []string{"GOPROXY=direct"}); err != nil {
 		return err
 	}
 
